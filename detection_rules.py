@@ -36,7 +36,7 @@ class UrgencyRule(rule):
         return 0, None
 
 
-class SenderRule(Rule):
+class SenderRule(rule):
     def __init__(self):
         super().__init__("Sender Rule", 20)
 
@@ -65,6 +65,39 @@ class SenderRule(Rule):
                 return self.score, "Suspicious sender domain detected"
 
         return 0, None
+    
+class LinkRule(rule):
+    def __init__(self):
+        super().__init__("Link Rule", 20)
+
+        self.url_pattern = r"https?://[^\s]+"
+
+        self.shorteners = [
+            "goo.gl",
+            "cutt.ly",
+            "t.co",
+            "bit.ly",
+            "ow.ly",
+
+        ]
+    def check(self, email):
+        text = email.body.lower()
+
+        urls = re.findall(self.url_pattern, text)
+        
+        for url in urls:
+            for word in self.suspicious_keywords:
+                if word in url:
+                    return self.score,
+            
+            for short in self.shorteners:
+                if short in url:
+                    return self.score,
+        return 0, None
+
+        
+
+
     
     
 
