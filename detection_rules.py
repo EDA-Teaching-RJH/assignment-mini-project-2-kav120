@@ -34,5 +34,55 @@ class UrgencyRule(rule):
                 return self.score, "suspicious language detected"
             
         return 0, None
+
+
+class SenderRule(Rule):
+    def __init__(self):
+        super().__init__("Sender Rule", 20)
+
+        self.suspicious_domains = [
+            ".xyz",
+            ".online",
+            ".site",
+            ".tk",
+            ".ru",
+            ".click",
+            ".tech",
+            ".info",
+            ".today",
+            ".work",
+            ".biz",
+            ".live",
+            ".paypa1",
+            ".g00gle",
+        ]
+
+    def check(self, email):
+        sender = email.sender.lower()
+
+        for domain in self.suspicious_domains:
+            if domain in sender:
+                return self.score, "Suspicious sender domain detected"
+
+        return 0, None
+    
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+      
+
+
+
         
 
