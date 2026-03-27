@@ -13,7 +13,7 @@ class rule:
     
 class UrgencyRule(rule):
     def __init__(self):
-        super().__init__("Urgency Rule", 10)
+        super().__init__("Urgency Rule", 20)
 
         self.patterns = [
             r"\burgent\b",
@@ -38,7 +38,7 @@ class UrgencyRule(rule):
 
 class SenderRule(rule):
     def __init__(self):
-        super().__init__("Sender Rule", 20)
+        super().__init__("Sender Rule", 25)
 
         self.suspicious_domains = [
             ".xyz",
@@ -68,7 +68,7 @@ class SenderRule(rule):
     
 class LinkRule(rule):
     def __init__(self):
-        super().__init__("Link Rule", 20)
+        super().__init__("Link Rule", 25)
 
         self.url_pattern = r"https?://[^\s]+"
 
