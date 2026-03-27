@@ -16,15 +16,15 @@ class UrgencyRule(rule):
         super().__init__("Urgency Rule", 10)
 
         self.patterns = [
-            r"urgent",
-            r"asap"
-            r"final warning"
-            r"limited time"
-            r"security alert"
-            r"last chance"
-            r"within 24 hours"
-            r'failure to respond'
-            r'click the link below immediately'
+            r"\burgent\b",
+            r"\basap\b"
+            r"\bfinal warning\b"
+            r"\blimited time\b"
+            r"\bsecurity alert\b"
+            r"\blast chance\b"
+            r"\bwithin 24 hours\b"
+            r"\bfailure to respond\b"
+            r"\bclick the link below immediately\b"
         ]
     def check(self, email):
         text = (email.subject + " " + email.body).lower()
