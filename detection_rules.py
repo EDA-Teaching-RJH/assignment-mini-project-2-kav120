@@ -86,13 +86,12 @@ class LinkRule(rule):
         urls = re.findall(self.url_pattern, text)
         
         for url in urls:
-            for word in self.suspicious_keywords:
-                if word in url:
-                    return self.score,
             
             for short in self.shorteners:
                 if short in url:
-                    return self.score,
+                    return self.score, "shortened link detected"
+            if urls:
+                return 10, "link detected in email"   
         return 0, None
 
         

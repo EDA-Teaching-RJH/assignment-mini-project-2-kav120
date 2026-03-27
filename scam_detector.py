@@ -7,7 +7,7 @@ class ScamDetector:
             SenderRule(),
             LinkRule()
       ]
-def classify_score(self, score):
+   def classify_score(self, score):
         if score >= 50:
             return "Likely Scam"
         elif score >= 20:
@@ -15,7 +15,7 @@ def classify_score(self, score):
         else:
             return "Possibly Safe"
             
-def analyse(self, email):
+   def analyse(self, email):
         total_score = 0
         reasons = [] 
 
